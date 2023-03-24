@@ -1,0 +1,191 @@
+html {
+    font-size: 16px;
+    width: 100vw;
+    height: 100vh;
+}
+
+html,
+body {
+    user-select: none;
+
+    padding: 0;
+    margin: 0;
+    font-family: "Comfortaa", cursive;
+    background-color: rgb(247, 247, 247);
+}
+
+#container {
+    padding: 50px;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    margin-top: 6rem;
+}
+
+/* Input field and OK button */
+#section {
+    width: 100%;
+    text-align: center;
+}
+
+/* OK button */
+.button {
+    font-size: 2rem;
+    width: 5rem;
+    height: 3rem;
+    background-color: default;
+    font-family: "Comfortaa", cursive;
+    background-color: #6f91ff;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+/* User input */
+#user-input {
+    font-size: 2rem;
+    height: 2.6rem;
+    font-family: "Comfortaa", cursive;
+    border: 1px solid black;
+}
+
+#user-input:focus {
+    outline: 1px solid black;
+    outline: none;
+}
+
+#user-input:hover {
+    border: 1px solid black;
+}
+
+/* Underscores */
+#underscores {
+    margin-top: 5rem;
+    font-size: 3.5rem;
+    word-spacing: 1.5rem;
+}
+
+/* Letter buttons - section */
+#buttons {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+/* Single letter button */
+.letter {
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
+
+    font-family: "Comfortaa", cursive;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #75d4ff;
+    margin: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+/* User lives */
+.lives {
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Media queries */
+@media only screen and (max-width: 1500px) {
+    #user-input {
+        font-size: 1.5rem;
+        height: 2.5rem;
+    }
+
+    .button {
+        font-size: 1.5rem;
+        width: 4rem;
+        height: 2.7rem;
+    }
+
+    #underscores {
+        font-size: 2.5rem;
+        word-spacing: 1.2rem;
+    }
+
+    .letter {
+        width: 3.6rem;
+        height: 3.6rem;
+        font-size: 1.5rem;
+    }
+
+    .lives {
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    #user-input {
+        font-size: 1.3rem;
+        height: 2rem;
+    }
+
+    .button {
+        font-size: 1.2rem;
+        width: 3.5rem;
+        height: 2.2rem;
+    }
+
+    #underscores {
+        font-size: 2.2rem;
+        word-spacing: 1rem;
+    }
+
+    .letter {
+        width: 3.2rem;
+        height: 3.2rem;
+        font-size: 1.2rem;
+    }
+
+    .lives {
+        font-size: 1.3rem;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    #user-input {
+        font-size: 1rem;
+        height: 1.8rem;
+    }
+
+    .button {
+        font-size: 1rem;
+        width: 3rem;
+        height: 2rem;
+    }
+
+    #underscores {
+        font-size: 1.6rem;
+        word-spacing: 0.8rem;
+        margin-top: 4rem;
+
+    }
+
+    .letter {
+        width: 2.6rem;
+        height: 2.6rem;
+        font-size: 1rem;
+    }
+
+    .lives {
+        font-size: 1rem;
+        margin-top: 2rem;
+
+    }
+
+
+}

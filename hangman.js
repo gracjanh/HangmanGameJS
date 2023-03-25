@@ -1,6 +1,6 @@
 "use strict";
 
-//Variables
+// VARIABLES
 const input = document.querySelector("#user-input");
 const underscores = document.querySelector("#underscores");
 const btnOK = document.querySelector(".button");
@@ -14,15 +14,8 @@ let lives = 10;
 underscores.textContent = "H A N G M A N";
 livesCounter.textContent = lives;
 
-// Function
-const disableBtn = function (element, color) {
-    element.style.backgroundColor = color;
-    element.style.color = "black";
-    element.disabled = true;
-};
-
-// Event listener - OK button
-btnOK.addEventListener("click", function (e) {
+// FUNCTIONS
+const clickOk = function (e) {
     e.preventDefault();
 
     // Remove focus from user's input
@@ -50,10 +43,9 @@ btnOK.addEventListener("click", function (e) {
             underscores.textContent = arrUnderscores.join(" ");
         });
     } else alert("Enter your word!");
-});
+};
 
-// Event listener - letter buttons
-buttons.addEventListener("click", function (e) {
+const clickLetter = function (e) {
     // If user's word contains chosen letter...
     if (
         userWord.includes(e.target.textContent) &&
@@ -73,7 +65,7 @@ buttons.addEventListener("click", function (e) {
         }
 
         // Disable button and make it green
-        disableBtn(e.target, "#4DD292");
+        setButtonColor(e.target, "#4DD292");
     }
 
     // If user's word doesn't contain chosen letter...
@@ -94,14 +86,11 @@ buttons.addEventListener("click", function (e) {
         }
 
         // Disable button and make it red
-        disableBtn(e.target, "#DC3221");
+        setButtonColor(e.target, "#DC3221");
     }
-});
+};
 
-// FIX Don't decrease lives counter if the wrong letter has been pressed more than once
-
-// When user pressed a key
-document.addEventListener("keydown", function (e) {
+const pressKey = function (e) {
     const key = e.key.toUpperCase();
 
     // If user's word contains pressed letter...
@@ -118,18 +107,23 @@ document.addEventListener("keydown", function (e) {
             userWord = "";
         }
         // Disable button and make it green
-        btnLetter.forEach(function (letter) {
+        btnLetter.forEach((letter) => {
             if (letter.textContent === key) {
-                disableBtn(letter, "#4DD292");
+                setButtonColor(letter, "#4DD292");
             }
         });
     }
 
     // If user's word doesn't contain pressed letter...
     if (!userWord.includes(key) && arrUnderscores.length !== 0) {
-        // Decrease lives counter and update UI
-        lives--;
-        livesCounter.textContent = lives;
+        // If button is disabled don't decrease lives
+        btnLetter.forEach((letter) => {
+            if (letter.textContent === key && !letter.disabled) {
+                // Decrease lives counter and update UI
+                lives--;
+                livesCounter.textContent = lives;
+            }
+        });
 
         // If lives counter is 0, display user's word and clear data
         if (lives === 0 || !arrUnderscores.includes("_")) {
@@ -139,10 +133,27 @@ document.addEventListener("keydown", function (e) {
         }
 
         // Disable button and make it red
-        btnLetter.forEach(function (letter) {
+        btnLetter.forEach((letter) => {
             if (letter.textContent === key) {
-                disableBtn(letter, "#DC3221");
+                setButtonColor(letter, "#DC3221");
             }
         });
     }
-});
+};
+
+const setButtonColor = function (element, color) {
+    element.style.backgroundColor = color;
+    element.style.color = "black";
+    element.disabled = true;
+};
+
+//EVENT LISTENERS
+
+// When user click OK button
+btnOK.addEventListener("click", clickOk);
+
+// When user click on a letter
+buttons.addEventListener("click", clickLetter);
+
+// When user pressed a key
+document.addEventListener("keydown", pressKey);
